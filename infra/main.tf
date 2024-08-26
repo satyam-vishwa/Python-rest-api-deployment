@@ -43,10 +43,9 @@ module "lb_target_group" {
   vpc_id                   = module.networking.dev_proj_1_vpc_id
   ec2_instance_id          = module.ec2.dev_proj_1_ec2_instance_id
 }
-
 module "alb" {
   source                    = "./load-balancer"
-  lb_name                   = "dev-proj-1-alb0"
+  lb_name                   = "dev-proj-1-alb"
   is_external               = false
   lb_type                   = "application"
   sg_enable_ssh_https       = module.security_group.sg_ec2_sg_ssh_http_id
@@ -57,8 +56,6 @@ module "alb" {
   lb_listner_port           = 5000
   lb_listner_protocol       = "HTTP"
   lb_listner_default_action = "forward"
-  lb_https_listner_port     = 443
-  lb_https_listner_protocol = "HTTPS"
   lb_target_group_attachment_port = 5000
 }
 
