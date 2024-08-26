@@ -37,7 +37,7 @@ module "ec2" {
 
 module "lb_target_group" {
   source                   = "./load-balancer-target-group"
-  lb_target_group_name     = "dev-proj-1-lb-target-group"
+  lb_target_group_name     = "dev-proj-1-lb-target-group0"
   lb_target_group_port     = 5000
   lb_target_group_protocol = "HTTP"
   vpc_id                   = module.networking.dev_proj_1_vpc_id
@@ -46,7 +46,7 @@ module "lb_target_group" {
 
 module "alb" {
   source                    = "./load-balancer"
-  lb_name                   = "dev-proj-1-alb"
+  lb_name                   = "dev-proj-1-alb0"
   is_external               = false
   lb_type                   = "application"
   sg_enable_ssh_https       = module.security_group.sg_ec2_sg_ssh_http_id
