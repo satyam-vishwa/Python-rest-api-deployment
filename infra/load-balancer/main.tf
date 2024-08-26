@@ -12,11 +12,11 @@ variable "lb_listner_default_action" {}
 variable "lb_target_group_attachment_port" {}
 
 output "aws_lb_dns_name" {
-  value = aws_lb.dev_proj_1_lb.dns_name
+  value = aws_lb.dev_proj_1_lb0.dns_name
 }
 
 output "aws_lb_zone_id" {
-  value = aws_lb.dev_proj_1_lb.zone_id
+  value = aws_lb.dev_proj_1_lb0.zone_id
 }
 
 resource "aws_lb" "dev_proj_1_lb0" {
@@ -29,7 +29,7 @@ resource "aws_lb" "dev_proj_1_lb0" {
   enable_deletion_protection = false
 
   tags = {
-    Name = "example-lb"
+    Name = var.tag_name
   }
 }
 
@@ -40,7 +40,7 @@ resource "aws_lb_target_group_attachment" "dev_proj_1_lb_target_group_attachment
 }
 
 resource "aws_lb_listener" "dev_proj_1_lb_listner0" {
-  load_balancer_arn = aws_lb.dev_proj_1_lb.arn
+  load_balancer_arn = aws_lb.dev_proj_1_lb0.arn
   port              = var.lb_listner_port
   protocol          = var.lb_listner_protocol
 
